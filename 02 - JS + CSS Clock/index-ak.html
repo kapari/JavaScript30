@@ -15,6 +15,20 @@
       </div>
     </div>
 
+    <div class="ak">
+        <h1>CSS &amp; JS Clock</h1>
+        <p>Differences:</p>
+        <ul>
+            <li>Broke one large function into smaller functions (do one thing only)</li>
+            <li>Removed broken transition on hand when starting a new rotation (12:00)</li>
+            <li>Styled hands to be distinct and more clock-like</li>
+        </ul>
+        <p>Improvement ideas:</p>
+        <ul>
+            <li>Have hour hand move smoothly; looks odd being exactly on the hour</li>
+        </ul>
+    </div>
+
 
   <style>
     html {
@@ -31,6 +45,15 @@
       flex:1;
       min-height: 100vh;
       align-items: center;
+    }
+
+    .ak {
+        max-width: 50%;
+        padding-left: 50px;
+        padding-right: 10%;
+        text-align: left;
+        font-size: 14px;
+        color: white;
     }
 
     .clock {
