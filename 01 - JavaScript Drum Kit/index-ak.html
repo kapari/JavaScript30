@@ -59,6 +59,46 @@
 
 <script>
 
+// listen for keydown on .key
+// add .playing class to pressed .key
+// get data-key value from pressed .key
+// play audio with matching data-key value
+// remove playing class when transition complete
+
+function playSound(keyCode) {
+    const audio = document.querySelector(`audio[data-key="${keyCode}"]`);
+    // only run if matching audio element
+    if (!audio) return;
+    audio.currentTime = 0;
+    audio.play();
+}
+
+function addHighlight(keyCode) {
+    const key = document.querySelector(`.key[data-key="${keyCode}"]`);
+    if (!key) return;
+    key.classList.add('playing');
+}
+
+function keyHandler(e) {
+    const keyCode = e.keyCode;
+    playSound(keyCode);
+    addHighlight(keyCode);
+}
+
+function removeHighlight(e) {
+    // only run if it's a transform transition
+    if (e.propertyName !== 'transform') return;
+    this.classList.remove('playing');
+}
+
+function addListeners() {
+    document.addEventListener("keydown", keyHandler);
+    const keys = document.querySelectorAll(".key");
+    keys.forEach(key => key.addEventListener("transitionend", removeHighlight));
+}
+
+addListeners();
+
 </script>
 
 
